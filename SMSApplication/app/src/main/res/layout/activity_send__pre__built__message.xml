@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Send_Pre_Built_Message"
+    android:background="#dbf9db">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_color"
+        android:padding="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/backBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/ic_keyboard_arrow_left_black_24dp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="10dp" />
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/backBtn"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="Send Pre-Built Message"
+            android:textAlignment="center"
+            android:textColor="#ffff"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            tools:ignore="MissingConstraints" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/right"
+        app:layout_constraintGuide_percent=".99"
+        android:orientation="vertical"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/left"
+        app:layout_constraintGuide_percent=".02"
+        android:orientation="vertical"/>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/top"
+        app:layout_constraintGuide_percent=".05"
+        android:orientation="horizontal"/>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottom"
+        app:layout_constraintGuide_percent=".95"
+        android:orientation="horizontal"/>
+
+
+
+
+    <ScrollView
+        app:layout_constraintRight_toRightOf="@id/right"
+        app:layout_constraintLeft_toLeftOf="@id/left"
+        app:layout_constraintBottom_toBottomOf="@id/bottom"
+        app:layout_constraintTop_toTopOf="@id/top"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:layout_marginTop="30dp">
+        <LinearLayout
+            app:layout_constraintBottom_toBottomOf="@id/topHeader"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:textColor="#ff23729a"
+                android:textStyle="bold"
+                android:id="@+id/txtNumber"
+                android:textSize="15sp"
+                android:padding="5dp"
+                android:text="Phone Number / ID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/topHeader"
+                tools:ignore="MissingConstraints" />
+
+            <EditText
+                android:inputType="number"
+                android:textColor="#000"
+                android:maxLength="11"
+                android:id="@+id/desNumber"
+                android:textSize="15sp"
+                android:padding="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/txtNumber"
+                android:hint="Enter your Phone Number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints" />
+
+
+            <TextView
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:textColor="#ff23729a"
+                android:textStyle="bold"
+                android:id="@+id/ammountNumber"
+                android:padding="5dp"
+                android:textSize="15sp"
+                android:text="Ammount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/desNumber"
+                />
+
+
+            <EditText
+                android:maxLength="5"
+                android:inputType="number"
+                android:textColor="#000"
+                android:id="@+id/ammountEdit"
+                android:textSize="15sp"
+                android:padding="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/ammountNumber"
+                android:hint="Enter your Amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints"
+                />
+
+
+
+
+            <TextView
+                android:textColor="#ff23729a"
+                android:textStyle="bold"
+                android:id="@+id/category"
+                android:textSize="15sp"
+                android:padding="5dp"
+                android:text="Select Category"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ammountEdit"
+                tools:ignore="MissingConstraints" />
+
+
+            <Spinner
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:id="@+id/categorySpinner"
+                app:layout_constraintTop_toBottomOf="@+id/shortCodes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints"></Spinner>
+
+
+
+            <TextView
+                android:textColor="#ff23729a"
+                android:textStyle="bold"
+                android:id="@+id/shortCodes"
+                android:textSize="15sp"
+                android:padding="5dp"
+                android:text="Short Code"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ammountEdit"
+                tools:ignore="MissingConstraints" />
+
+
+
+            <Spinner
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:id="@+id/codeSpinner"
+                app:layout_constraintTop_toBottomOf="@+id/shortCodes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints"></Spinner>
+
+
+
+            <LinearLayout
+                android:padding="5dp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <Button
+                    android:id="@+id/sendMessageDestination"
+                    android:layout_width="150dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/button_bg"
+                    android:text="Send Message"
+                    android:textColor="#ffff"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/codeSpinner"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:ignore="MissingConstraints" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

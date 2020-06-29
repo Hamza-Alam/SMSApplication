@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Edit_Add_Auto_Short_Code"
+    android:background="#dbf9db">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_color"
+        android:padding="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/backBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/ic_keyboard_arrow_left_black_24dp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="10dp" />
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/backBtn"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="Edit/Add Auto Short Codes"
+            android:textAlignment="center"
+            android:textColor="#ffff"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="MissingConstraints" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:textStyle="bold"
+        android:textColor="#ff23729a"
+        android:id="@+id/txtNumber"
+        android:textSize="15sp"
+        android:padding="5dp"
+        android:text="Short Code Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topHeader"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:textColor="#000"
+        android:id="@+id/nameEdit"
+        android:textSize="15sp"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/txtNumber"
+        android:hint="Enter your Short Code Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:textStyle="bold"
+        android:textColor="#ff23729a"
+        android:id="@+id/codestring"
+        android:textSize="15sp"
+        android:padding="5dp"
+        android:text="Auto Short Code Incoming Sample String"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameEdit"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:inputType="text|textMultiLine"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:textColor="#000"
+        android:id="@+id/codeEdit"
+        android:textSize="15sp"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/codestring"
+        android:hint="Enter your Sample String"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:textStyle="bold"
+        android:textColor="#ff23729a"
+        android:text="Hint"
+        android:padding="5dp"
+        app:layout_constraintTop_toBottomOf="@+id/codeEdit"
+        android:id="@+id/txtHint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:text="*896523*{{key}}*8569*{{number}}*56{{amount}}*96#"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@+id/txtHint"
+        android:id="@+id/codeHint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:textStyle="bold"
+        android:textColor="#ff23729a"
+        android:id="@+id/forwardTxt"
+        android:textSize="15sp"
+        android:padding="5dp"
+        android:text="Auto Short Code Query Build String"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/codeHint"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:inputType="text|textMultiLine"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:textColor="#000"
+        android:id="@+id/forwardEdit"
+        android:textSize="15sp"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/forwardTxt"
+        android:hint="Enter your Query Build String"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:textStyle="bold"
+        android:textColor="#ff23729a"
+        android:id="@+id/categoryName"
+        android:textSize="15sp"
+        android:padding="5dp"
+        android:text="Select Recipients Number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/forwardEdit"
+        tools:ignore="MissingConstraints" />
+
+    <Spinner
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:id="@+id/numberSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/categoryName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"></Spinner>
+
+
+    <TextView
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:textStyle="bold"
+        android:textColor="#ff23729a"
+        android:id="@+id/functionlitySelect"
+        android:textSize="15sp"
+        android:padding="5dp"
+        android:text="Select Functionality"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numberSpinner"
+        tools:ignore="MissingConstraints" />
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        app:layout_constraintTop_toBottomOf="@+id/functionlitySelect"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints"
+        android:padding="10dp">
+
+        <RadioButton
+            android:id="@+id/radioMale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dail It"
+            android:checked="true" />
+
+        <RadioButton
+           android:layout_marginLeft="100dp"
+            android:id="@+id/radioFemale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forward it Without Dailing" />
+    </RadioGroup>
+
+    <Button
+        android:textColor="#fff"
+        android:id="@+id/addShortCode"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="9dp"
+        android:background="@drawable/button_bg"
+        android:text="Save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+        app:layout_constraintWidth_percent=".50"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

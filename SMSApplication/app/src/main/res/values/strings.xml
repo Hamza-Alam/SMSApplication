@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">SMSApplication</string>
+    <string name="title_activity_destination__number">Destination_Number</string>
+    <string name="title_activity_short_codes">ShortCodes</string>
+    <string name="title_activity_category_list">CategoryList</string>
+    <string name="title_activity_list__forward__code">List_Forward_Code</string>
+    <string name="title_activity_save__number__list">Save_Number_List</string>
+    <string name="title_activity_auto__short__codes__list">Auto_Short_Codes_List</string>
+</resources>

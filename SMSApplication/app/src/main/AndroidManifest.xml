@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.smsapplication">
+
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.WRITE_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.MANAGE_OWN_CALLS" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <!-- <activity android:name=".dialUssd"></activity> -->
+        <service
+            android:name=".SmsService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".SettingScreen" />
+        <activity android:name=".Edit_Add_Auto_Short_Code" />
+        <activity
+            android:name=".Auto_Short_Codes_List"
+            android:label="@string/title_activity_auto__short__codes__list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Function_Calling" />
+        <activity android:name=".Add_Number" />
+        <activity
+            android:name=".Save_Number_List"
+            android:label="@string/title_activity_save__number__list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Incoming_String" />
+        <activity
+            android:name=".List_Forward_Code"
+            android:label="@string/title_activity_list__forward__code"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Short_Code_Forward" />
+        <activity
+            android:name=".CategoryList"
+            android:label="@string/title_activity_category_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".AddCategory" />
+        <activity android:name=".ListInbox" />
+        <activity
+            android:name=".MessageIbox"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".Send_Pre_Built_Message" />
+        <activity android:name=".Edit_Add_Short_Codes" />
+        <activity
+            android:name=".ShortCodes"
+            android:label="@string/title_activity_short_codes"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".EditDestination" />
+        <activity
+            android:name=".Destination_Number"
+            android:label="@string/title_activity_destination__number"
+            android:theme="@style/AppTheme.NoActionBar" /> <!-- <activity -->
+        <!-- android:name=".MainActivity" -->
+        <!-- android:exported="true"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.MAIN" /> -->
+        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
+<!--        <activity-->
+<!--            android:name=".dialUssd"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+        <activity
+            android:name=".Check_Inbox_Service_Setting"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name=".Sms_Listerner"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.romellfudi.ussdlibrary.USSDService"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/ussd_service" />
+        </service>
+
+        <service android:name=".MessageService"
+            android:enabled="true"/>
+    </application>
+
+</manifest>

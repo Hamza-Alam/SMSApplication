@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:layout_gravity="center"
+    android:background="#dbf9db">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/right"
+        app:layout_constraintGuide_percent=".95"
+        android:orientation="vertical"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/left"
+        app:layout_constraintGuide_percent=".05"
+        android:orientation="vertical"/>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/top"
+        app:layout_constraintGuide_percent=".20"
+        android:orientation="horizontal"/>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottom"
+        app:layout_constraintGuide_percent=".95"
+        android:orientation="horizontal"/>
+
+
+
+
+    <LinearLayout
+        android:id="@+id/topHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_color"
+        android:padding="10dp"
+        android:gravity="right"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/backBtn"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="Main Screen"
+            android:textAlignment="center"
+            android:textColor="#ffff"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteY="-5dp" />
+
+        <Button
+            android:id="@+id/refresh"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/ic_refresh_black_24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="-7dp" />
+
+        <Button
+            android:id="@+id/moreBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/more_vert_black_24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="-7dp" />
+
+    </LinearLayout>
+<ScrollView
+    app:layout_constraintRight_toRightOf="@id/right"
+    app:layout_constraintLeft_toLeftOf="@id/left"
+    app:layout_constraintBottom_toBottomOf="@id/bottom"
+    app:layout_constraintTop_toTopOf="@id/top"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:fillViewport="true"
+    android:layout_marginTop="20dp">
+
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+       >
+
+        <Button
+            android:id="@+id/destinationBtn"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:background="@drawable/button_bg"
+            android:text="Destination Numbers"
+            android:textColor="#ffff"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_percent=".50"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteY="100dp" />
+
+        <Button
+            android:id="@+id/shortcode"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_bg"
+            android:text="Short Code"
+            android:textColor="#ffff"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/destinationBtn"
+            app:layout_constraintWidth_percent=".50"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/category"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_bg"
+            android:text="Short Code Category"
+            android:textColor="#ffff"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/shortcode"
+            app:layout_constraintWidth_percent=".50" />
+
+        <Button
+            android:id="@+id/forwardBtn"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_bg"
+            android:text="Auto Short Codes"
+            android:textColor="#ffff"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/messageBtn"
+            app:layout_constraintWidth_percent=".50" />
+
+
+
+<!--        <Button-->
+<!--            android:id="@+id/sendMessage"-->
+<!--            android:layout_width="250dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:background="@drawable/button_bg"-->
+<!--            android:text="Send Pre-Build Message"-->
+<!--            android:textColor="#ffff"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/messageBtn"-->
+<!--            app:layout_constraintWidth_percent=".50" />-->
+
+        <Button
+            android:id="@+id/saveNumber"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_bg"
+            android:text="Auto Short Codes Recipients ( Number)"
+            android:textColor="#ffff"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sendMessage"
+            app:layout_constraintWidth_percent=".50" />
+
+
+
+        <Button
+            android:id="@+id/funCall"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_bg"
+            android:text="Function Calling"
+            android:textColor="#ffff"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sendMessage"
+            app:layout_constraintWidth_percent=".50" />
+
+<!--        <Button-->
+<!--            android:id="@+id/messageBtn"-->
+<!--            android:layout_width="250dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:background="@drawable/button_bg"-->
+<!--            android:text="Message"-->
+<!--            android:textColor="#ffff"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/sendMessage"-->
+<!--            app:layout_constraintWidth_percent=".50" />-->
+
+
+    </LinearLayout>
+</ScrollView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

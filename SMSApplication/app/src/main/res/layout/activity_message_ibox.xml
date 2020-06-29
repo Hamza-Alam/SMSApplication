@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MessageIbox"
+    android:focusable="false"
+    android:focusableInTouchMode="false"
+    android:background="#dbf9db"
+    android:orientation="vertical">
+
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/topHeader"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@drawable/background_color"
+      android:padding="10dp"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:ignore="MissingConstraints">
+
+    <Button
+        android:id="@+id/backBtn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/ic_keyboard_arrow_left_black_24dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="10dp" />
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/backBtn"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Inbox"
+        android:textAlignment="center"
+        android:textColor="#ffff"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+  <SearchView
+      android:imeOptions="flagNoExtractUi"
+      android:background="#fff"
+      android:queryHint="Search Message"
+      android:id="@+id/messageSearch"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/topHeader"
+      tools:ignore="MissingConstraints"
+      />
+
+  <androidx.recyclerview.widget.RecyclerView
+
+      android:id="@+id/message_recyclerView"
+      android:layout_width="match_parent"
+      android:layout_below="@id/messageSearch"
+      android:layout_height="match_parent"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:ignore="MissingConstraints"></androidx.recyclerview.widget.RecyclerView>
+
+
+
+
+
+
+
+  <!--<com.google.android.material.floatingactionbutton.FloatingActionButton-->
+      <!--android:id="@+id/fabSend"-->
+      <!--android:background="@drawable/background_color"-->
+      <!--android:layout_width="wrap_content"-->
+      <!--android:layout_height="wrap_content"-->
+      <!--android:layout_gravity="bottom|end"-->
+      <!--app:srcCompat="@drawable/ic_send_black_24dp" />-->
+  </RelativeLayout>
