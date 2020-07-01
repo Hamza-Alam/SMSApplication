@@ -64,7 +64,7 @@ public class EditDestination extends AppCompatActivity {
         Check_Operation=intent.getStringExtra("Check_Operation");
         if(Check_Operation!=null)
         {
-            checkNumber.setVisibility(View.INVISIBLE);
+            checkNumber.setVisibility(View.VISIBLE);
         }
         else
         {

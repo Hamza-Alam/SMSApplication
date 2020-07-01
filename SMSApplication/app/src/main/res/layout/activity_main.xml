@@ -105,9 +105,10 @@
        >
 
         <Button
+            android:padding="10dp"
             android:id="@+id/destinationBtn"
-            android:layout_width="250dp"
-            android:layout_height="45dp"
+            android:layout_width="300dp"
+            android:layout_height="75dp"
             android:background="@drawable/button_bg"
             android:text="Destination Numbers"
             android:textColor="#ffff"
@@ -118,9 +119,11 @@
             tools:layout_editor_absoluteY="100dp" />
 
         <Button
+
+            android:padding="10dp"
             android:id="@+id/shortcode"
-            android:layout_width="250dp"
-            android:layout_height="45dp"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/button_bg"
             android:text="Short Code"
@@ -132,9 +135,12 @@
             tools:ignore="MissingConstraints" />
 
         <Button
+            android:paddingTop="20dp"
+            android:paddingLeft="18dp"
+            android:paddingRight="18dp"
             android:id="@+id/category"
-            android:layout_width="250dp"
-            android:layout_height="45dp"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@drawable/button_bg"
             android:text="Short Code Category"
@@ -145,9 +151,12 @@
             app:layout_constraintWidth_percent=".50" />
 
         <Button
+            android:paddingTop="18dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:id="@+id/forwardBtn"
-            android:layout_width="250dp"
-            android:layout_height="45dp"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@drawable/button_bg"
             android:text="Auto Short Codes"
@@ -159,23 +168,27 @@
 
 
 
-<!--        <Button-->
-<!--            android:id="@+id/sendMessage"-->
-<!--            android:layout_width="250dp"-->
-<!--            android:layout_height="45dp"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:background="@drawable/button_bg"-->
-<!--            android:text="Send Pre-Build Message"-->
-<!--            android:textColor="#ffff"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/messageBtn"-->
-<!--            app:layout_constraintWidth_percent=".50" />-->
+        <Button
+            android:padding="10dp"
+            android:id="@+id/sendMessage"
+            android:layout_width="300dp"
+            android:layout_height="85dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_bg"
+            android:text="Send Pre-Build Message"
+            android:textColor="#ffff"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/messageBtn"
+            app:layout_constraintWidth_percent=".50" />
 
         <Button
+            android:paddingTop="18dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:id="@+id/saveNumber"
-            android:layout_width="250dp"
-            android:layout_height="45dp"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@drawable/button_bg"
             android:text="Auto Short Codes Recipients ( Number)"
@@ -200,18 +213,19 @@
             app:layout_constraintTop_toBottomOf="@+id/sendMessage"
             app:layout_constraintWidth_percent=".50" />
 
-<!--        <Button-->
-<!--            android:id="@+id/messageBtn"-->
-<!--            android:layout_width="250dp"-->
-<!--            android:layout_height="45dp"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:background="@drawable/button_bg"-->
-<!--            android:text="Message"-->
-<!--            android:textColor="#ffff"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/sendMessage"-->
-<!--            app:layout_constraintWidth_percent=".50" />-->
+        <Button
+            android:padding="10dp"
+            android:id="@+id/messageBtn"
+            android:layout_width="300dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_bg"
+            android:text="Message"
+            android:textColor="#ffff"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sendMessage"
+            app:layout_constraintWidth_percent=".50" />
 
 
     </LinearLayout>

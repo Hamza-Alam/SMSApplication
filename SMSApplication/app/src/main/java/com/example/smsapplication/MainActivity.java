@@ -19,6 +19,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Telephony;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -86,9 +87,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         destination=findViewById(R.id.destinationBtn);
-//        preBuiltBtn=findViewById(R.id.sendMessage);
+        preBuiltBtn=findViewById(R.id.sendMessage);
         shortCodeBtn=findViewById(R.id.shortcode);
-//        messageBtn=findViewById(R.id.messageBtn);
+        messageBtn=findViewById(R.id.messageBtn);
         categoryBtn=findViewById(R.id.category);
         refreshBtn=findViewById(R.id.refresh);
         forwardBtn=findViewById(R.id.forwardBtn);
@@ -96,6 +97,26 @@ public class MainActivity extends AppCompatActivity {
         functionCallingBtn=findViewById(R.id.funCall);
         moreBtn=findViewById(R.id.moreBtn);
 
+        destination.setText(Html.fromHtml("<b><big>" + "Destination Numbers" + "</big></b>" +  "<br />" + "<br />" +
+                "<small>" + "Where it will send Manually Created Short Code messages " + "</small>" + "<br />"));
+
+        shortCodeBtn.setText(Html.fromHtml("<b><big>" + "Short Codes For Messeging" + "</big></b>" +  "<br />" + "<br />" +
+                "<small>" + "Codes which will create a custom message in Short COde String Format after taking inputs and going to be send from \"Send Pre Built Message\" Screen" + "</small>" + "<br />"));
+
+        categoryBtn.setText(Html.fromHtml("<b><big>" + "Categories Of Short Codes For Messeging" + "</big></b>" +  "<br />" + "<br />" +
+                "<small>" + "Categories of Short Codes which will create a custom message in Short COde String Format after taking inputs and going to be send from \"Send Pre Built Message\" Screen" + "</small>" + "<br />"));
+
+        forwardBtn.setText(Html.fromHtml("<b><big>" + "Auto Short Codes For Messeging/Dialing " + "</big></b>" +  "<br />" + "<br />" +
+                "<small>" + "Short Codes which will create a custom message in Short Code String Format after taking inputs and going to be forward it as message or going to dial in Messeging Service" + "</small>" + "<br />"));
+
+        saveNumbrBtn.setText(Html.fromHtml("<b><big>" + "Receipent Of Auto Short Code For Messaging/Dialing" + "</big></b>" +  "<br />" + "<br />" +
+                "<small>" + "After Dialing the Auto Short Code in service, Receipent Numbers are those where it will send it's response." + "</small>" + "<br />"));
+
+        messageBtn.setText(Html.fromHtml("<b><big>" + "Mesages" + "</big></b>" +  "<br />" + "<br />" +
+                "<small>" + "See All Sent and Received Messages" + "</small>" + "<br />"));
+
+        preBuiltBtn.setText(Html.fromHtml("<b><big>" + "Send Pre Built Message" + "</big></b>" +  "<br />" + "<br />" +
+                "<small>" + "Here you can send custom created message in Short Code Format after giving it inputs" + "</small>" + "<br />"));
 
         moreBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -179,14 +200,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-//        messageBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent=new Intent(MainActivity.this,MessageIbox.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
+        messageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,MessageIbox.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         destination.setOnClickListener(new View.OnClickListener() {
             @Override

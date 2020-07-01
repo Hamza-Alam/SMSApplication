@@ -31,7 +31,7 @@ public class MessageService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-
+        onTaskRemoved(intent);
         Toast.makeText(MessageService.this,"Service Start !",Toast.LENGTH_LONG).show();
         if(ContextCompat.checkSelfPermission(getBaseContext(),"android.permission.READ_SMS")== PackageManager.PERMISSION_GRANTED){
 
@@ -48,13 +48,21 @@ public class MessageService extends Service {
     private void getAllMessage() {
         Toast.makeText(MessageService.this, "Get All Message Fuction Here !", Toast.LENGTH_LONG).show();
         final Uri SMS_INBOX = Uri.parse("content://sms/");
-        Cursor c = getContentResolver().query(SMS_INBOX, null, "read = 0", null, null);
+        Cursor c = getContentResolver().query(SMS_INBOX, null, "read=0", null, null);
         while (c.moveToNext()) {
             String read = c.getString(c.getColumnIndex("read"));
             String status = c.getString(c.getColumnIndex("status"));
             String body = c.getString(c.getColumnIndex("body"));
             System.out.println( "READ >> " + read + " Status >> " + status + " Body >> " + body);
         }
+    }
+
+    @Override
+    public void onTaskRemoved(Intent rootIntent) {
+        Intent restartServiceIntent = new Intent(getApplicationContext(),this.getClass());
+        restartServiceIntent.setPackage(getPackageName());
+        startService(restartServiceIntent);
+        super.onTaskRemoved(rootIntent);
     }
 
 
