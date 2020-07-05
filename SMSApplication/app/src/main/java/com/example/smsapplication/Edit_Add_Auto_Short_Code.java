@@ -2,10 +2,17 @@ package com.example.smsapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.telephony.SubscriptionInfo;
+import android.telephony.SubscriptionManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -21,7 +28,7 @@ import java.util.regex.Pattern;
 public class Edit_Add_Auto_Short_Code extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     Button back,autoShortBtn;
-    Spinner numberSpinner;
+    Spinner numberSpinner,receiveResponse,simCheckSpinner;
     ArrayList<Recipients_Number_Model> arrayList;
     MyHelper myHelper;
     Recipients_Number_Adapter recipients_number_adapter;
@@ -29,25 +36,25 @@ public class Edit_Add_Auto_Short_Code extends AppCompatActivity implements Adapt
     String name=null;
     String sampleString=null;
     String queryBuildString=null;
-    String recipientNumber="";
+    String recipientNumber="",receiveRecipientNumber="";
     List<Character> sampleChars = new ArrayList<>();
     List<Character> buildChars = new ArrayList<>();
     List<String> charSamplePick=new ArrayList<>();
     List<String> charBuildPick=new ArrayList<>();
+    List<String> categories = new ArrayList<String>();
+    String simValue="";
     boolean checkResult=true,checkVaribale=false;
     private RadioGroup radioGroup;
     private RadioButton radioButton;
     int numID;
-    String selectedRadioButtonValue=null,editFlag=null,id=null,updateName=null,updateSampleString=null,updateQueryString=null,updateNumber=null,updateRadioTxt=null;
+    String selectedRadioButtonValue=null,editFlag=null,id=null,updateName=null,updateSampleString=null,updateQueryString=null,updateNumber=null,updateRadioTxt=null,updateReciveNumber=null,updateSimValue=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit__add__auto__short__code);
         numberSpinner=findViewById(R.id.numberSpinner);
-        numberSpinner.setOnItemSelectedListener(this);
-        myHelper=new MyHelper(this);
-
-
+        simCheckSpinner=findViewById(R.id.simSpinner);
+        receiveResponse=findViewById(R.id.receiveSpinner);
         back=findViewById(R.id.backBtn);
         codeName=findViewById(R.id.nameEdit);
         codeString=findViewById(R.id.codeEdit);
@@ -56,17 +63,91 @@ public class Edit_Add_Auto_Short_Code extends AppCompatActivity implements Adapt
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
 
 
+
+
+        receiveResponse.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                numID=arrayList.get(i).id;
+                System.out.println("You can Selected Id : " + String.valueOf(numID));
+                receiveRecipientNumber=myHelper.getRecipientNumber(numID);
+                System.out.println("Your Number is  : " + receiveRecipientNumber);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        SubscriptionManager sManager = (SubscriptionManager) getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
+        if (checkSelfPermission(Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    Activity#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for Activity#requestPermissions for more details.
+            return;
+        }
+        SubscriptionInfo infoSim1 = sManager.getActiveSubscriptionInfoForSimSlotIndex(0);
+        SubscriptionInfo infoSim2 = sManager.getActiveSubscriptionInfoForSimSlotIndex(1);
+        int count = 0;
+        if (infoSim1 != null ) {
+            count++;
+        }
+        if (infoSim2 != null){
+            count++;
+        }
+        if(count==1){
+            categories.add("1");
+        }
+        else if(count==2){
+            categories.add("1");
+            categories.add("2");
+        }
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        simCheckSpinner.setAdapter(dataAdapter);
+
+        simCheckSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String getValue=categories.get(i).toString();
+               if(getValue=="1"){
+                   simValue= String.valueOf(0);
+               }
+               else{
+                   simValue= String.valueOf(1);
+               }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        numberSpinner.setOnItemSelectedListener(this);
+        myHelper=new MyHelper(this);
+
+
+
+
+
         Intent intent=getIntent();
         id=intent.getStringExtra("ID");
         updateName=intent.getStringExtra("name");
         updateSampleString=intent.getStringExtra("sampleSring");
         updateQueryString=intent.getStringExtra("buildString");
         updateNumber=intent.getStringExtra("number");
+        updateReciveNumber=intent.getStringExtra("reciveNumber");
+        updateSimValue=intent.getStringExtra("simValue");
         updateRadioTxt=intent.getStringExtra("functionality");
         editFlag=intent.getStringExtra("Check");
 
 
-        if(id!=null && updateName!=null && updateSampleString!=null && updateQueryString!=null && updateNumber!=null && updateRadioTxt!=null && editFlag!=null){
+        if(id!=null && updateName!=null && updateSampleString!=null && updateQueryString!=null && updateNumber!=null && updateRadioTxt!=null && editFlag!=null && updateReciveNumber!=null && updateSimValue!=null){
             codeName.setText(updateName);
             codeString.setText(updateSampleString);
             buildCode.setText(updateQueryString);
@@ -94,7 +175,7 @@ public class Edit_Add_Auto_Short_Code extends AppCompatActivity implements Adapt
 
                 if(editFlag!=null)
                 {
-                    if(name.length()>0 && recipientNumber.length()>0 && selectedRadioButtonValue.length()>0 && sampleString.length()>0 && queryBuildString.length()>0)
+                    if(name.length()>0 && recipientNumber.length()>0 && selectedRadioButtonValue.length()>0 && sampleString.length()>0 && queryBuildString.length()>0 && receiveRecipientNumber.length()>0 && simValue.length()>0)
                     {
                         if (sampleString.length() == 0) {
 
@@ -122,8 +203,6 @@ public class Edit_Add_Auto_Short_Code extends AppCompatActivity implements Adapt
 
                             Toast.makeText(getApplicationContext(), "Query Build String is not starting with * character or not ending with # character ", Toast.LENGTH_LONG).show();
 //                    errorMsg = "Query Build String is not starting with * character or not ending with # character ";
-
-
                         }
                         else if (queryBuildString.contains("{{}}")) {
 
@@ -154,7 +233,7 @@ public class Edit_Add_Auto_Short_Code extends AppCompatActivity implements Adapt
                             Toast.makeText(getApplicationContext(), "Your Sample String Already Exist in DataBase!", Toast.LENGTH_LONG).show();
                         }
                         else {
-                            boolean resultSubmit = updateShortCode(id,name, sampleString, queryBuildString, recipientNumber);
+                            boolean resultSubmit = updateShortCode(id,name, sampleString, queryBuildString, recipientNumber,receiveRecipientNumber,simValue);
                         }
                     }
                     else{
@@ -164,7 +243,7 @@ public class Edit_Add_Auto_Short_Code extends AppCompatActivity implements Adapt
 
 
                 else {
-                    if (name.length()>0 && recipientNumber.length()>0 && selectedRadioButtonValue.length()>0 && sampleString.length()>0 && queryBuildString.length()>0)
+                    if (name.length()>0 && recipientNumber.length()>0 && selectedRadioButtonValue.length()>0 && sampleString.length()>0 && queryBuildString.length()>0 && simValue.length()>=0 && receiveRecipientNumber.length()>0)
                     {
                         if (sampleString==null) {
                             Toast.makeText(getApplicationContext(), "Sample String is not allowed to leave empty", Toast.LENGTH_LONG).show();
@@ -223,7 +302,9 @@ public class Edit_Add_Auto_Short_Code extends AppCompatActivity implements Adapt
                             Toast.makeText(getApplicationContext(), "This Sample String Starting Number Already Exists in DataBase", Toast.LENGTH_LONG).show();
                         }
                         else {
-                            boolean resultSubmit = addShortCodes(name, sampleString, queryBuildString, recipientNumber);
+
+//                            Toast.makeText(getApplicationContext(), "Your Data is: "+simValue, Toast.LENGTH_LONG).show();
+                            boolean resultSubmit = addShortCodes(name, sampleString, queryBuildString, recipientNumber,receiveRecipientNumber,simValue);
                         }
                     }
                     else {
@@ -282,6 +363,7 @@ public class Edit_Add_Auto_Short_Code extends AppCompatActivity implements Adapt
         getAllRecipientNumber();
 
 
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -329,11 +411,18 @@ public class Edit_Add_Auto_Short_Code extends AppCompatActivity implements Adapt
         return myHelper.checkSampleStringInDB(recordNumber);
 
     }
-    private boolean updateShortCode(String id,String name,String query1,String query2,String number)
+    private boolean updateShortCode(String id,String name,String query1,String query2,String number,String reciveNumber,String simValue)
     {
-        if(name!=null && query1!=null && query2!=null && number!=null && selectedRadioButtonValue!=null)
+        if(name!=null && query1!=null && query2!=null && number!=null && selectedRadioButtonValue!=null && reciveNumber!=null && simValue!=null)
         {
-            boolean submitResult=myHelper.updateAutoShortCode(id,name,query1,query2,number,selectedRadioButtonValue);
+//            Log.d("Name :",name);
+//            Log.d("Query 1 :",query1);
+//            Log.d("Query 2 :",query2);
+//            Log.d("Send Number :",number);
+//            Log.d("Recive Number :",reciveNumber);
+//            Log.d("Sim Value :",simValue);
+//            Log.d("Radio Button Value :",selectedRadioButtonValue);
+            boolean submitResult=myHelper.updateAutoShortCode(id,name,query1,query2,number,receiveRecipientNumber,simValue,selectedRadioButtonValue);
             if(submitResult)
             {
                 Toast.makeText(Edit_Add_Auto_Short_Code.this, "Sucessfull Update Short Code!", Toast.LENGTH_LONG).show();
@@ -352,13 +441,19 @@ public class Edit_Add_Auto_Short_Code extends AppCompatActivity implements Adapt
         /******************* Selected Radio Button Value Get ************/
         return  true;
     }
-    private boolean addShortCodes(String name,String query1,String query2,String number)
+    private boolean addShortCodes(String name,String query1,String query2,String number,String reciveRecipientNumber,String simValue)
     {
 
-        if(name!=null && query1!=null && query2!=null && number!=null && selectedRadioButtonValue!=null)
+        if(name!=null && query1!=null && query2!=null && number!=null && selectedRadioButtonValue!=null && reciveRecipientNumber!=null && simValue!=null)
         {
-
-            boolean submitResult=myHelper.addAutoShortCodes(name,query1,query2,number,selectedRadioButtonValue);
+            Log.d("Name :",name);
+            Log.d("Query 1 :",query1);
+            Log.d("Query 2 :",query2);
+            Log.d("Send Number :",number);
+            Log.d("Recive Number :",reciveRecipientNumber);
+            Log.d("Sim Value :",simValue);
+            Log.d("Radio Button Value :",selectedRadioButtonValue);
+            boolean submitResult=myHelper.addAutoShortCodes(name,query1,query2,number,reciveRecipientNumber,simValue,selectedRadioButtonValue);
             if(submitResult)
             {
                 Toast.makeText(Edit_Add_Auto_Short_Code.this, "Sucessfull Adding Short Code!", Toast.LENGTH_LONG).show();
@@ -562,8 +657,10 @@ public class Edit_Add_Auto_Short_Code extends AppCompatActivity implements Adapt
 
     private void getAllRecipientNumber() {
         arrayList= myHelper.AllRecipientsNumber();
+
         recipients_number_adapter= new Recipients_Number_Adapter(Edit_Add_Auto_Short_Code.this,arrayList);
         numberSpinner.setAdapter(recipients_number_adapter);
+        receiveResponse.setAdapter(recipients_number_adapter);
     }
 
     @Override

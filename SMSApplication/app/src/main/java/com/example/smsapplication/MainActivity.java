@@ -19,6 +19,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Telephony;
+import android.telephony.SubscriptionInfo;
+import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyManager;
 import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
@@ -31,11 +34,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button moreBtn,destination,preBuiltBtn,shortCodeBtn,messageBtn,listBtn,categoryBtn,refreshBtn,forwardBtn,saveNumbrBtn,functionCallingBtn;
+    Button moreBtn, destination, preBuiltBtn, shortCodeBtn, messageBtn, listBtn, categoryBtn, refreshBtn, forwardBtn, saveNumbrBtn, functionCallingBtn;
     MyHelper myHelper;
-
-
-
 
 
     @Override
@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog alert11 = builder1.create();
         alert11.show();
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,12 +71,11 @@ public class MainActivity extends AppCompatActivity {
         //MyHelper myHelper=new MyHelper(this,null,null,1);
         SQLiteDatabase db = new MyHelper(this).getWritableDatabase();
 
-        myHelper=new MyHelper(this);
+        myHelper = new MyHelper(this);
 
         getActiveNumber();
 
-
-        Log.d("Reading: ", "Reading all contacts..");
+        //Log.d("Reading: ", "Reading all contacts..");
         List<DestinationClas> contacts = myHelper.getAllContacts();
 
         for (DestinationClas cn : contacts) {
@@ -85,15 +85,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-
-        destination=findViewById(R.id.destinationBtn);
-        preBuiltBtn=findViewById(R.id.sendMessage);
-        shortCodeBtn=findViewById(R.id.shortcode);
-        messageBtn=findViewById(R.id.messageBtn);
-        categoryBtn=findViewById(R.id.category);
-        refreshBtn=findViewById(R.id.refresh);
-        forwardBtn=findViewById(R.id.forwardBtn);
-        saveNumbrBtn=findViewById(R.id.saveNumber);
+        destination = findViewById(R.id.destinationBtn);
+        preBuiltBtn = findViewById(R.id.sendMessage);
+        shortCodeBtn = findViewById(R.id.shortcode);
+        messageBtn = findViewById(R.id.messageBtn);
+        categoryBtn = findViewById(R.id.category);
+        refreshBtn = findViewById(R.id.refresh);
+        forwardBtn = findViewById(R.id.forwardBtn);
+        saveNumbrBtn = findViewById(R.id.saveNumber);
 //        <?xml version="1.0" encoding="utf-8"?>
 //<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 //    xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -223,33 +222,33 @@ public class MainActivity extends AppCompatActivity {
 //        tools:ignore="MissingConstraints" />
 //
 //</androidx.constraintlayout.widget.ConstraintLayout>=findViewById(R.id.funCall);
-        moreBtn=findViewById(R.id.moreBtn);
+        moreBtn = findViewById(R.id.moreBtn);
 
-        destination.setText(Html.fromHtml("<b><big>" + "Destination Numbers" + "</big></b>" +  "<br />" +
+        destination.setText(Html.fromHtml("<b><big>" + "Destination Numbers" + "</big></b>" + "<br />" +
                 "<small style>" + "Where it will send Manually Created Short Code messages " + "</small>" + "<br />"));
 
-        shortCodeBtn.setText(Html.fromHtml("<b><big>" + "Short Codes For Messeging" + "</big></b>" +  "<br />" +
+        shortCodeBtn.setText(Html.fromHtml("<b><big>" + "Short Codes For Messeging" + "</big></b>" + "<br />" +
                 "<small>" + "Codes which will create a custom message in Short COde String Format after taking inputs and going to be send from \"Send Pre Built Message\" Screen" + "</small>" + "<br />"));
 
-        categoryBtn.setText(Html.fromHtml("<b><big>" + "Categories Of Short Codes For Messeging" + "</big></b>" +  "<br />" +
+        categoryBtn.setText(Html.fromHtml("<b><big>" + "Categories Of Short Codes For Messeging" + "</big></b>" + "<br />" +
                 "<small>" + "Categories of Short Codes which will create a custom message in Short COde String Format after taking inputs and going to be send from \"Send Pre Built Message\" Screen" + "</small>" + "<br />"));
 
-        forwardBtn.setText(Html.fromHtml("<b><big>" + "Auto Short Codes For Messeging/Dialing " + "</big></b>" +  "<br />" +
+        forwardBtn.setText(Html.fromHtml("<b><big>" + "Auto Short Codes For Messeging/Dialing " + "</big></b>" + "<br />" +
                 "<small>" + "Short Codes which will create a custom message in Short Code String Format after taking inputs and going to be forward it as message or going to dial in Messeging Service" + "</small>" + "<br />"));
 
         saveNumbrBtn.setText(Html.fromHtml("<b><big>" + "Receipent Of Auto Short Code For Messaging/Dialing" + "</big></b>" + "<br />" +
                 "<small>" + "After Dialing the Auto Short Code in service, Receipent Numbers are those where it will send it's response." + "</small>" + "<br />"));
 
-        messageBtn.setText(Html.fromHtml("<b><big>" + "Mesages" + "</big></b>" +  "<br />" +
+        messageBtn.setText(Html.fromHtml("<b><big>" + "Mesages" + "</big></b>" + "<br />" +
                 "<small>" + "See All Sent and Received Messages" + "</small>" + "<br />"));
 
-        preBuiltBtn.setText(Html.fromHtml("<b><big>" + "Send Pre Built Message" + "</big></b>" +  "<br />" +
+        preBuiltBtn.setText(Html.fromHtml("<b><big>" + "Send Pre Built Message" + "</big></b>" + "<br />" +
                 "<small>" + "Here you can send custom created message in Short Code Format after giving it inputs" + "</small>" + "<br />"));
 
         moreBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this,SettingScreen.class);
+                Intent intent = new Intent(MainActivity.this, SettingScreen.class);
                 startActivity(intent);
                 finish();
             }
@@ -269,23 +268,21 @@ public class MainActivity extends AppCompatActivity {
         saveNumbrBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this,Save_Number_List.class);
+                Intent intent = new Intent(MainActivity.this, Save_Number_List.class);
                 startActivity(intent);
                 finish();
             }
         });
-
 
 
         forwardBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this,Auto_Short_Codes_List.class);
+                Intent intent = new Intent(MainActivity.this, Auto_Short_Codes_List.class);
                 startActivity(intent);
                 finish();
             }
         });
-
 
 
         refreshBtn.setOnClickListener(new View.OnClickListener() {
@@ -321,7 +318,7 @@ public class MainActivity extends AppCompatActivity {
         categoryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this,CategoryList.class);
+                Intent intent = new Intent(MainActivity.this, CategoryList.class);
                 startActivity(intent);
                 finish();
             }
@@ -331,7 +328,7 @@ public class MainActivity extends AppCompatActivity {
         messageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this,MessageIbox.class);
+                Intent intent = new Intent(MainActivity.this, MessageIbox.class);
                 startActivity(intent);
                 finish();
             }
@@ -340,7 +337,7 @@ public class MainActivity extends AppCompatActivity {
         destination.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this,Destination_Number.class);
+                Intent intent = new Intent(MainActivity.this, Destination_Number.class);
                 startActivity(intent);
                 finish();
             }
@@ -359,32 +356,29 @@ public class MainActivity extends AppCompatActivity {
         shortCodeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this,ShortCodes.class);
+                Intent intent = new Intent(MainActivity.this, ShortCodes.class);
                 startActivity(intent);
                 finish();
             }
         });
 
 
-
-
-
     }
 
 
-
     private void getActiveNumber() {
-        SQLiteDatabase database=myHelper.getReadableDatabase();
+        SQLiteDatabase database = myHelper.getReadableDatabase();
 
-        String query="Select PHONE_NUMBER from DESTINATION_NUMBER where status=1";
-        Cursor c = database.rawQuery( query,null);
+        String query = "Select PHONE_NUMBER from DESTINATION_NUMBER where status=1";
+        Cursor c = database.rawQuery(query, null);
         if (c.moveToFirst()) {
-            String activeNumber= c.getString(0);
+            String activeNumber = c.getString(0);
             SharedPreferences pref = getApplicationContext().getSharedPreferences("Destination_Number", 0); // 0 - for private mode
             SharedPreferences.Editor editor = pref.edit();
-            editor.putString("Destination_Number",activeNumber);
+            editor.putString("Destination_Number", activeNumber);
             editor.commit();
         }
 
     }
 }
+

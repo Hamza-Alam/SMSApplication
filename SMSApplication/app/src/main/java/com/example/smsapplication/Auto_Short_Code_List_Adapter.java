@@ -49,6 +49,8 @@ public class Auto_Short_Code_List_Adapter extends RecyclerView.Adapter<Auto_Shor
         public TextView sampleSring;
         public TextView buildString;
         public TextView number;
+        public TextView recivedNumber;
+        public TextView simValue;
         public TextView functionality;
         public Button morebtn;
 
@@ -61,6 +63,8 @@ public class Auto_Short_Code_List_Adapter extends RecyclerView.Adapter<Auto_Shor
             sampleSring=itemView.findViewById(R.id.sampleString);
             buildString=itemView.findViewById(R.id.buildString);
             number=itemView.findViewById(R.id.number);
+            recivedNumber=itemView.findViewById(R.id.rcvNumber);
+            simValue=itemView.findViewById(R.id.simVal);
             functionality=itemView.findViewById(R.id.func);
             morebtn=itemView.findViewById(R.id.more);
         }
@@ -75,6 +79,8 @@ public class Auto_Short_Code_List_Adapter extends RecyclerView.Adapter<Auto_Shor
             holder.sampleSring.setText(listCode.getSampleString());
             holder.buildString.setText(listCode.getBuildString());
             holder.number.setText(listCode.getNumber());
+            holder.recivedNumber.setText(listCode.getRecivedRecipientNumber());
+            holder.simValue.setText(listCode.getSimValue());
             holder.functionality.setText(listCode.getFunctionality());
 
 
@@ -99,6 +105,8 @@ public class Auto_Short_Code_List_Adapter extends RecyclerView.Adapter<Auto_Shor
                                 intent.putExtra("sampleSring", holder.sampleSring.getText());
                                 intent.putExtra("buildString", holder.buildString.getText());
                                 intent.putExtra("number",holder.number.getText());
+                                intent.putExtra("reciveNumber",holder.recivedNumber.getText());
+                                intent.putExtra("simValue",holder.simValue.getText());
                                 intent.putExtra("functionality",holder.functionality.getText());
                                 intent.putExtra("Check","Edit");
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

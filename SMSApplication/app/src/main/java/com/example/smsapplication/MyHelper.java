@@ -32,7 +32,7 @@ public class MyHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE if not exists CodeCategory (id INTEGER PRIMARY KEY AUTOINCREMENT,Category_Name TEXT)");
         db.execSQL("CREATE TABLE if not exists Short_Code_Forward_String (id INTEGER PRIMARY KEY AUTOINCREMENT,Code_Name TEXT,Code_String TEXT,Forward_String TEXT,Category INTEGER)");
         db.execSQL("CREATE TABLE if not exists Recipients_Number (id INTEGER PRIMARY KEY AUTOINCREMENT,Number_Name TEXT,Number TEXT)");
-        db.execSQL("CREATE TABLE if not exists Auto_Short_Code (id INTEGER PRIMARY KEY AUTOINCREMENT,Code_Name TEXT,Sample_String TEXT,Build_String TEXT,Number TEXT,Selected_Functionality TEXT)");
+        db.execSQL("CREATE TABLE if not exists Auto_Short_Code (id INTEGER PRIMARY KEY AUTOINCREMENT,Code_Name TEXT,Sample_String TEXT,Build_String TEXT,Number TEXT,Recive_Number TEXT,Sim_Value TEXT,Selected_Functionality TEXT)");
     }
 
 
@@ -47,7 +47,7 @@ public class MyHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
 
-                returnResult.add(new Auto_Short_Code_List_Model(cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5)));
+                returnResult.add(new Auto_Short_Code_List_Model(cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5),cursor.getString(6),cursor.getString(7)));
 
             } while (cursor.moveToNext());
         }
@@ -526,13 +526,15 @@ public class MyHelper extends SQLiteOpenHelper {
         return result1;
     }
 
-    public boolean addAutoShortCodes(String name, String query1, String query2, String number, String selectedRadioButtonValue) {
+    public boolean addAutoShortCodes(String name, String query1, String query2, String sendRecipientNumber,String reciveRecipientNumber,String simValue, String selectedRadioButtonValue) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("Code_Name", name);
         values.put("Sample_String", query1);
         values.put("Build_String", query2);
-        values.put("Number", number);
+        values.put("Number", sendRecipientNumber);
+        values.put("Recive_Number",reciveRecipientNumber);
+        values.put("Sim_Value",simValue);
         values.put("Selected_Functionality", selectedRadioButtonValue);
         long result = database.insert("Auto_Short_Code", null, values);
         if (result == -1) {
@@ -590,7 +592,7 @@ public class MyHelper extends SQLiteOpenHelper {
         return db.delete("Recipients_Number", "id" + "=" + text, null) > 0;
     }
 
-    public boolean updateAutoShortCode(String id, String name, String query1, String query2, String number, String selectedRadioButtonValue) {
+    public boolean updateAutoShortCode(String id, String name, String query1, String query2, String number, String reciveRecipient, String simValue,String selectedRadioButtonValue) {
 
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -598,6 +600,8 @@ public class MyHelper extends SQLiteOpenHelper {
         values.put("Sample_String", query1);
         values.put("Build_String", query2);
         values.put("Number", number);
+        values.put("Recive_Number",reciveRecipient);
+        values.put("Sim_Value",simValue);
         values.put("Selected_Functionality", selectedRadioButtonValue);
         long result = database.update("Auto_Short_Code",values, "id=" + id, null);
         if (result == -1) {

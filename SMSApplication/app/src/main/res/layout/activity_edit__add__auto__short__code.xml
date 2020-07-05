@@ -42,250 +42,269 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:textStyle="bold"
-        android:textColor="#ff23729a"
-        android:id="@+id/txtNumber"
-        android:textSize="15sp"
-        android:padding="5dp"
-        android:text="Enter Short Code Name"
+    <ScrollView
+        app:layout_constraintBottom_toBottomOf="@+id/topHeader"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="50dp"
+        android:fillViewport="true"
         app:layout_constraintTop_toBottomOf="@+id/topHeader"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints">
 
-    <EditText
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:textColor="#000"
-        android:id="@+id/nameEdit"
-        android:textSize="15sp"
-        android:padding="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/txtNumber"
-        android:hint="Enter Short Code Name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="50dp">
 
-    <TextView
 
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:textStyle="bold"
-        android:textColor="#ff23729a"
-        android:id="@+id/codestring"
-        android:textSize="15sp"
-        android:padding="5dp"
-        android:text="Auto Short Code Incoming Sample String"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameEdit"
-        tools:ignore="MissingConstraints" />
+            <TextView
+                android:id="@+id/txtNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:padding="5dp"
+                android:text="Enter Short Code Name"
+                android:textColor="#ff23729a"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/topHeader"
+                tools:ignore="MissingConstraints" />
 
-    <EditText
-        android:inputType="text|textMultiLine"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:textColor="#000"
-        android:id="@+id/codeEdit"
-        android:textSize="15sp"
-        android:padding="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/codestring"
-        android:hint="Enter your Incoming Sample String"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints" />
+            <EditText
+                android:id="@+id/nameEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:hint="Enter Short Code Name"
+                android:padding="10dp"
+                android:textColor="#000"
+                android:textSize="15sp"
+                app:layout_constraintTop_toBottomOf="@+id/txtNumber"
+                tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:textStyle="bold"
-        android:textColor="#ff23729a"
-        android:text="Hint"
-        android:padding="5dp"
-        app:layout_constraintTop_toBottomOf="@+id/codeEdit"
-        android:id="@+id/txtHint"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+            <TextView
 
-    <TextView
-        android:text="*896523*{{key}}*8569*{{number}}*56{{amount}}*96#"
-        android:textAlignment="center"
-        app:layout_constraintTop_toBottomOf="@+id/txtHint"
-        android:id="@+id/codeHint"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+                android:id="@+id/codestring"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="8dp"
+                android:padding="5dp"
+                android:text="Auto Short Code Incoming Sample String"
+                android:textColor="#ff23729a"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nameEdit"
+                tools:ignore="MissingConstraints" />
 
-    <TextView
+            <EditText
+                android:id="@+id/codeEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:hint="Enter your Incoming Sample String"
+                android:inputType="text|textMultiLine"
+                android:padding="10dp"
+                android:textColor="#000"
+                android:textSize="15sp"
+                app:layout_constraintTop_toBottomOf="@+id/codestring"
+                tools:ignore="MissingConstraints" />
 
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:textStyle="bold"
-        android:textColor="#ff23729a"
-        android:id="@+id/forwardTxt"
-        android:textSize="15sp"
-        android:padding="5dp"
-        android:text="Build Auto Short Code Query String to Dail/Message"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/codeHint"
-        tools:ignore="MissingConstraints" />
+            <TextView
+                android:id="@+id/txtHint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:padding="5dp"
+                android:text="Hint"
+                android:textColor="#ff23729a"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/codeEdit" />
 
-    <EditText
-        android:inputType="text|textMultiLine"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:textColor="#000"
-        android:id="@+id/forwardEdit"
-        android:textSize="15sp"
-        android:padding="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/forwardTxt"
-        android:hint="Enter your Auto Short Code Query String to Dail/Message"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints" />
+            <TextView
+                android:id="@+id/codeHint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="*896523*{{key}}*8569*{{number}}*56{{amount}}*96#"
+                android:textAlignment="center"
+                app:layout_constraintTop_toBottomOf="@+id/txtHint" />
 
-    <TextView
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:textStyle="bold"
-        android:textColor="#ff23729a"
-        android:id="@+id/categoryName"
-        android:textSize="15sp"
-        android:padding="5dp"
-        android:text="Select Recipients Number Who Will Send Sample String"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forwardEdit"
-        tools:ignore="MissingConstraints" />
+            <TextView
 
-    <Spinner
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:id="@+id/numberSpinner"
-        app:layout_constraintTop_toBottomOf="@+id/categoryName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints"></Spinner>
+                android:id="@+id/forwardTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="8dp"
+                android:padding="5dp"
+                android:text="Build Auto Short Code Query String to Dail/Message"
+                android:textColor="#ff23729a"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/codeHint"
+                tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:textStyle="bold"
-        android:textColor="#ff23729a"
-        android:id="@+id/reciveShortCode"
-        android:textSize="15sp"
-        android:padding="5dp"
-        android:text="Select Recipients Number Who Will Receive Short Code Response/Message"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numberSpinner"
-        tools:ignore="MissingConstraints" />
+            <EditText
+                android:id="@+id/forwardEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:hint="Enter your Auto Short Code Query String to Dail/Message"
+                android:inputType="text|textMultiLine"
+                android:padding="10dp"
+                android:textColor="#000"
+                android:textSize="15sp"
+                app:layout_constraintTop_toBottomOf="@+id/forwardTxt"
+                tools:ignore="MissingConstraints" />
 
-    <Spinner
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:id="@+id/receiveSpinner"
-        app:layout_constraintTop_toBottomOf="@+id/reciveShortCode"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints"></Spinner>
+            <TextView
+                android:id="@+id/categoryName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="8dp"
+                android:padding="5dp"
+                android:text="Select Recipients Number Who Will Send Sample String"
+                android:textColor="#ff23729a"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/forwardEdit"
+                tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:textStyle="bold"
-        android:textColor="#ff23729a"
-        android:id="@+id/simSendMessage"
-        android:textSize="15sp"
-        android:padding="5dp"
-        android:text="Select a Sim which will dail or send the Message"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/receiveSpinner"
-        tools:ignore="MissingConstraints" />
+            <Spinner
+                android:id="@+id/numberSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/categoryName"
+                tools:ignore="MissingConstraints"></Spinner>
 
-    <Spinner
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:id="@+id/simSpinner"
-        app:layout_constraintTop_toBottomOf="@+id/simSendMessage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints"></Spinner>
+            <TextView
+                android:id="@+id/reciveShortCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="8dp"
+                android:padding="5dp"
+                android:text="Select Recipients Number Who Will Receive Short Code Response/Message"
+                android:textColor="#ff23729a"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/numberSpinner"
+                tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:textStyle="bold"
-        android:textColor="#ff23729a"
-        android:id="@+id/functionlitySelect"
-        android:textSize="15sp"
-        android:padding="5dp"
-        android:text="Select Functionality of Built Short Code"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/simSpinner"
-        tools:ignore="MissingConstraints" />
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        app:layout_constraintTop_toBottomOf="@+id/functionlitySelect"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:orientation="horizontal"
-        tools:ignore="MissingConstraints"
-        android:padding="10dp">
+            <Spinner
+                android:id="@+id/receiveSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/reciveShortCode"
+                tools:ignore="MissingConstraints"></Spinner>
 
-        <RadioButton
-            android:id="@+id/radioMale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Dail It"
-            android:checked="true" />
+            <TextView
+                android:id="@+id/simSendMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="8dp"
+                android:padding="5dp"
+                android:text="Select a Sim which will dail or send the Message"
+                android:textColor="#ff23729a"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/receiveSpinner"
+                tools:ignore="MissingConstraints" />
 
-        <RadioButton
-            android:layout_marginLeft="100dp"
-            android:id="@+id/radioFemale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Forward a Message" />
-    </RadioGroup>
+            <Spinner
+                android:id="@+id/simSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/simSendMessage"
+                tools:ignore="MissingConstraints"></Spinner>
 
-    <Button
-        android:textColor="#fff"
-        android:id="@+id/addShortCode"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="9dp"
-        android:background="@drawable/button_bg"
-        android:text="Save"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
-        app:layout_constraintWidth_percent=".50"
-        tools:ignore="MissingConstraints" />
+            <TextView
+                android:id="@+id/functionlitySelect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="8dp"
+                android:padding="5dp"
+                android:text="Select Functionality of Built Short Code"
+                android:textColor="#ff23729a"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/simSpinner"
+                tools:ignore="MissingConstraints" />
 
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/functionlitySelect"
+                tools:ignore="MissingConstraints">
+
+                <RadioButton
+                    android:id="@+id/radioMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Dail It" />
+
+                <RadioButton
+                    android:id="@+id/radioFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="100dp"
+                    android:text="Forward a Message" />
+            </RadioGroup>
+
+            <Button
+                android:layout_gravity="center"
+                android:id="@+id/addShortCode"
+                android:layout_width="200dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="9dp"
+                android:background="@drawable/button_bg"
+                android:text="Save"
+                android:textColor="#fff"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+                app:layout_constraintWidth_percent=".50"
+                tools:ignore="MissingConstraints" />
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
