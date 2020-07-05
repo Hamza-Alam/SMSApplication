@@ -119,11 +119,12 @@
             tools:layout_editor_absoluteY="100dp" />
 
         <Button
-
-            android:padding="10dp"
+            android:paddingTop="15dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:id="@+id/shortcode"
-            android:layout_width="300dp"
-            android:layout_height="100dp"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@drawable/button_bg"
             android:text="Short Code"
@@ -136,8 +137,8 @@
 
         <Button
             android:paddingTop="20dp"
-            android:paddingLeft="18dp"
-            android:paddingRight="18dp"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
             android:id="@+id/category"
             android:layout_width="320dp"
             android:layout_height="wrap_content"
@@ -151,9 +152,9 @@
             app:layout_constraintWidth_percent=".50" />
 
         <Button
-            android:paddingTop="18dp"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
+            android:paddingTop="15dp"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
             android:id="@+id/forwardBtn"
             android:layout_width="320dp"
             android:layout_height="wrap_content"
@@ -169,10 +170,12 @@
 
 
         <Button
-            android:padding="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
             android:id="@+id/sendMessage"
             android:layout_width="300dp"
-            android:layout_height="85dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@drawable/button_bg"
             android:text="Send Pre-Build Message"
@@ -183,11 +186,11 @@
             app:layout_constraintWidth_percent=".50" />
 
         <Button
-            android:paddingTop="18dp"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
+            android:paddingTop="15dp"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
             android:id="@+id/saveNumber"
-            android:layout_width="300dp"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@drawable/button_bg"
@@ -200,24 +203,26 @@
 
 
 
-        <Button
-            android:id="@+id/funCall"
-            android:layout_width="250dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/button_bg"
-            android:text="Function Calling"
-            android:textColor="#ffff"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sendMessage"
-            app:layout_constraintWidth_percent=".50" />
+<!--        <Button-->
+<!--            android:id="@+id/funCall"-->
+<!--            android:layout_width="250dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:background="@drawable/button_bg"-->
+<!--            android:text="Function Calling"-->
+<!--            android:textColor="#ffff"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/sendMessage"-->
+<!--            app:layout_constraintWidth_percent=".50" />-->
 
         <Button
-            android:padding="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
             android:id="@+id/messageBtn"
             android:layout_width="300dp"
-            android:layout_height="80dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@drawable/button_bg"
             android:text="Message"

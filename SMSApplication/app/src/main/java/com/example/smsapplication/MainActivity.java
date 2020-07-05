@@ -94,28 +94,156 @@ public class MainActivity extends AppCompatActivity {
         refreshBtn=findViewById(R.id.refresh);
         forwardBtn=findViewById(R.id.forwardBtn);
         saveNumbrBtn=findViewById(R.id.saveNumber);
-        functionCallingBtn=findViewById(R.id.funCall);
+//        <?xml version="1.0" encoding="utf-8"?>
+//<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+//    xmlns:app="http://schemas.android.com/apk/res-auto"
+//    xmlns:tools="http://schemas.android.com/tools"
+//    android:layout_width="match_parent"
+//    android:layout_height="match_parent"
+//    tools:context=".Edit_Add_Short_Codes"
+//    android:background="#dbf9db">
+//
+//
+//    <androidx.constraintlayout.widget.ConstraintLayout
+//        android:id="@+id/topHeader"
+//        android:layout_width="match_parent"
+//        android:layout_height="wrap_content"
+//        android:background="@drawable/background_color"
+//        android:padding="10dp"
+//        app:layout_constraintTop_toTopOf="parent"
+//        tools:ignore="MissingConstraints">
+//
+//        <Button
+//            android:id="@+id/backBtn"
+//            android:layout_width="30dp"
+//            android:layout_height="30dp"
+//            android:layout_alignParentLeft="true"
+//            android:background="@drawable/ic_keyboard_arrow_left_black_24dp"
+//            app:layout_constraintTop_toTopOf="parent"
+//            tools:layout_editor_absoluteX="10dp" />
+//
+//
+//        <TextView
+//            android:id="@+id/textView"
+//            android:layout_width="match_parent"
+//            android:layout_height="wrap_content"
+//            android:layout_alignStart="@+id/backBtn"
+//            android:fontFamily="sans-serif-smallcaps"
+//            android:text="Add Code Category"
+//            android:textAlignment="center"
+//            android:textColor="#ffff"
+//            android:textSize="25sp"
+//            android:textStyle="bold"
+//            tools:ignore="MissingConstraints" />
+//
+//    </androidx.constraintlayout.widget.ConstraintLayout>
+//
+//    <TextView
+//        android:textStyle="bold"
+//        android:textColor="#ff23729a"
+//        android:id="@+id/txtNumber"
+//        android:textSize="15sp"
+//        android:padding="10dp"
+//        android:text="Short Code Category Name"
+//        android:layout_width="match_parent"
+//        android:layout_height="wrap_content"
+//        android:layout_marginTop="16dp"
+//        app:layout_constraintEnd_toEndOf="parent"
+//        app:layout_constraintStart_toStartOf="parent"
+//        app:layout_constraintTop_toBottomOf="@+id/topHeader"
+//        tools:ignore="MissingConstraints" />
+//
+//    <EditText
+//        android:textColor="#000"
+//        android:id="@+id/nameCategory"
+//        android:textSize="15sp"
+//        android:padding="10dp"
+//        android:layout_marginStart="8dp"
+//        android:layout_marginEnd="8dp"
+//        app:layout_constraintTop_toBottomOf="@+id/txtNumber"
+//        android:hint="Enter your Short Code Category Name"
+//        android:layout_width="match_parent"
+//        android:layout_height="wrap_content"
+//        tools:ignore="MissingConstraints" />
+//
+//    <TextView
+//        android:textStyle="bold"
+//        android:textColor="#ff23729a"
+//        android:id="@+id/possibleNetwork"
+//        android:textSize="15sp"
+//        android:padding="10dp"
+//        android:text="Short Code Category Name"
+//        android:layout_width="match_parent"
+//        android:layout_height="wrap_content"
+//        android:layout_marginTop="16dp"
+//        app:layout_constraintEnd_toEndOf="parent"
+//        app:layout_constraintStart_toStartOf="parent"
+//        app:layout_constraintTop_toBottomOf="@+id/nameCategory"
+//        tools:ignore="MissingConstraints" />
+//
+//    <EditText
+//        android:textColor="#000"
+//        android:id="@+id/possibleNetworkText"
+//        android:textSize="15sp"
+//        android:padding="10dp"
+//        android:layout_marginStart="8dp"
+//        android:layout_marginEnd="8dp"
+//        app:layout_constraintTop_toBottomOf="@+id/possibleNetwork"
+//        android:hint="Enter your Short Code Category Name"
+//        android:layout_width="match_parent"
+//        android:layout_height="wrap_content"
+//        tools:ignore="MissingConstraints" />
+//
+//    <TextView
+//        android:hint="Hint: 0311, 0312, 0313, 0314, 0315, 0316, 0317, 0318, 0319"
+//        android:id="@+id/hintPossibleNetwork"
+//        android:textSize="15sp"
+//        android:padding="10dp"
+//        android:layout_width="match_parent"
+//        android:layout_height="wrap_content"
+//        android:layout_marginTop="8dp"
+//        app:layout_constraintEnd_toEndOf="parent"
+//        app:layout_constraintStart_toStartOf="parent"
+//        app:layout_constraintTop_toBottomOf="@+id/possibleNetworkText"
+//        tools:ignore="MissingConstraints" />
+//
+//
+//    <Button
+//        android:textColor="#fff"
+//        android:id="@+id/addShortCodeCategory"
+//        android:layout_width="0dp"
+//        android:layout_height="wrap_content"
+//        android:layout_marginTop="16dp"
+//        android:background="@drawable/button_bg"
+//        android:text="Save"
+//        app:layout_constraintEnd_toEndOf="parent"
+//        app:layout_constraintStart_toStartOf="parent"
+//        app:layout_constraintTop_toBottomOf="@+id/hintPossibleNetwork"
+//        app:layout_constraintWidth_percent=".50"
+//        tools:ignore="MissingConstraints" />
+//
+//</androidx.constraintlayout.widget.ConstraintLayout>=findViewById(R.id.funCall);
         moreBtn=findViewById(R.id.moreBtn);
 
-        destination.setText(Html.fromHtml("<b><big>" + "Destination Numbers" + "</big></b>" +  "<br />" + "<br />" +
-                "<small>" + "Where it will send Manually Created Short Code messages " + "</small>" + "<br />"));
+        destination.setText(Html.fromHtml("<b><big>" + "Destination Numbers" + "</big></b>" +  "<br />" +
+                "<small style>" + "Where it will send Manually Created Short Code messages " + "</small>" + "<br />"));
 
-        shortCodeBtn.setText(Html.fromHtml("<b><big>" + "Short Codes For Messeging" + "</big></b>" +  "<br />" + "<br />" +
+        shortCodeBtn.setText(Html.fromHtml("<b><big>" + "Short Codes For Messeging" + "</big></b>" +  "<br />" +
                 "<small>" + "Codes which will create a custom message in Short COde String Format after taking inputs and going to be send from \"Send Pre Built Message\" Screen" + "</small>" + "<br />"));
 
-        categoryBtn.setText(Html.fromHtml("<b><big>" + "Categories Of Short Codes For Messeging" + "</big></b>" +  "<br />" + "<br />" +
+        categoryBtn.setText(Html.fromHtml("<b><big>" + "Categories Of Short Codes For Messeging" + "</big></b>" +  "<br />" +
                 "<small>" + "Categories of Short Codes which will create a custom message in Short COde String Format after taking inputs and going to be send from \"Send Pre Built Message\" Screen" + "</small>" + "<br />"));
 
-        forwardBtn.setText(Html.fromHtml("<b><big>" + "Auto Short Codes For Messeging/Dialing " + "</big></b>" +  "<br />" + "<br />" +
+        forwardBtn.setText(Html.fromHtml("<b><big>" + "Auto Short Codes For Messeging/Dialing " + "</big></b>" +  "<br />" +
                 "<small>" + "Short Codes which will create a custom message in Short Code String Format after taking inputs and going to be forward it as message or going to dial in Messeging Service" + "</small>" + "<br />"));
 
-        saveNumbrBtn.setText(Html.fromHtml("<b><big>" + "Receipent Of Auto Short Code For Messaging/Dialing" + "</big></b>" +  "<br />" + "<br />" +
+        saveNumbrBtn.setText(Html.fromHtml("<b><big>" + "Receipent Of Auto Short Code For Messaging/Dialing" + "</big></b>" + "<br />" +
                 "<small>" + "After Dialing the Auto Short Code in service, Receipent Numbers are those where it will send it's response." + "</small>" + "<br />"));
 
-        messageBtn.setText(Html.fromHtml("<b><big>" + "Mesages" + "</big></b>" +  "<br />" + "<br />" +
+        messageBtn.setText(Html.fromHtml("<b><big>" + "Mesages" + "</big></b>" +  "<br />" +
                 "<small>" + "See All Sent and Received Messages" + "</small>" + "<br />"));
 
-        preBuiltBtn.setText(Html.fromHtml("<b><big>" + "Send Pre Built Message" + "</big></b>" +  "<br />" + "<br />" +
+        preBuiltBtn.setText(Html.fromHtml("<b><big>" + "Send Pre Built Message" + "</big></b>" +  "<br />" +
                 "<small>" + "Here you can send custom created message in Short Code Format after giving it inputs" + "</small>" + "<br />"));
 
         moreBtn.setOnClickListener(new View.OnClickListener() {
@@ -128,14 +256,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        functionCallingBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this,Function_Calling.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+//        functionCallingBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent=new Intent(MainActivity.this,Function_Calling.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
 
 
         saveNumbrBtn.setOnClickListener(new View.OnClickListener() {

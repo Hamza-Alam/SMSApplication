@@ -70,6 +70,47 @@
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints" />
 
+    <TextView
+        android:textStyle="bold"
+        android:textColor="#ff23729a"
+        android:id="@+id/possibleNetwork"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:text="Enter Possible Number Network Matches"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameCategory"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:textColor="#000"
+        android:id="@+id/possibleNetworkText"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/possibleNetwork"
+        android:hint="Enter Possible Number Network Matches"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:hint="Hint: 0311, 0312, 0313, 0314, 0315, 0316, 0317, 0318, 0319"
+        android:id="@+id/hintPossibleNetwork"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/possibleNetworkText"
+        tools:ignore="MissingConstraints" />
+
 
     <Button
         android:textColor="#fff"
@@ -81,7 +122,7 @@
         android:text="Save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameCategory"
+        app:layout_constraintTop_toBottomOf="@+id/hintPossibleNetwork"
         app:layout_constraintWidth_percent=".50"
         tools:ignore="MissingConstraints" />
 
