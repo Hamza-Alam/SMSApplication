@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,15 +17,17 @@ public class AddCategory extends AppCompatActivity {
     Button categoryBtn;
     Button back;
     TextView categoryName;
+    EditText networkNumber;
     MyHelper myHelper;
     String id;
     String check=null;
-    String text=null;
+    String text=null,number=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_category);
         categoryName=findViewById(R.id.nameCategory);
+        networkNumber=findViewById(R.id.possibleNetworkNumber);
         categoryBtn=findViewById(R.id.addShortCodeCategory);
         myHelper=new MyHelper(this);
         back=findViewById(R.id.backBtn);
@@ -31,18 +35,20 @@ public class AddCategory extends AppCompatActivity {
 
         Intent intent=getIntent();
         String name=intent.getStringExtra("CategoryName");
+        String codeNum=intent.getStringExtra("NetworkNumber");
         id=intent.getStringExtra("CatID");
         check=intent.getStringExtra("Check");
 
         if(check!=null)
         {
             categoryName.setText(name);
+            networkNumber.setText(codeNum);
             categoryBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(!categoryName.getText().equals(""))
+                    if(!categoryName.getText().equals("") && !networkNumber.getText().equals(""))
                     {
-                        boolean result=myHelper.updateCategory(categoryName.getText().toString(),id);
+                        boolean result=myHelper.updateCategory(categoryName.getText().toString(),id,networkNumber.getText().toString());
                         if(result==false)
                         {
                             Toast.makeText(AddCategory.this,"Faield !",Toast.LENGTH_LONG).show();
@@ -50,11 +56,10 @@ public class AddCategory extends AppCompatActivity {
                         else
                         {
                             Toast.makeText(AddCategory.this,"Sucessfully Update !",Toast.LENGTH_LONG).show();
+                            Intent intent=new Intent(AddCategory.this,CategoryList.class);
+                            startActivity(intent);
+                            finish();
                         }
-
-                        Intent intent=new Intent(AddCategory.this,CategoryList.class);
-                        startActivity(intent);
-                        finish();
                     }
                 }
             });
@@ -66,9 +71,10 @@ public class AddCategory extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     text=categoryName.getText().toString();
-                    if(!text.equals(""))
+                    number=networkNumber.getText().toString();
+                    if(!text.equals("") && !number.equals(""))
                     {
-                        boolean result=myHelper.addCategory(categoryName.getText().toString());
+                        boolean result=myHelper.addCategory(categoryName.getText().toString(),number);
                         if(result==false)
                         {
                             Toast.makeText(AddCategory.this,"Faield !",Toast.LENGTH_LONG).show();
@@ -76,11 +82,11 @@ public class AddCategory extends AppCompatActivity {
                         else
                         {
                             Toast.makeText(AddCategory.this,"Sucessfully Add !",Toast.LENGTH_LONG).show();
+                            Intent intent=new Intent(AddCategory.this,CategoryList.class);
+                            startActivity(intent);
+                            finish();
                         }
 
-                        Intent intent=new Intent(AddCategory.this,CategoryList.class);
-                        startActivity(intent);
-                        finish();
                     }
                     else
                     {

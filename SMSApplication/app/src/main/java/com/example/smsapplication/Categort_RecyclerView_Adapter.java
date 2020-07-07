@@ -39,12 +39,14 @@ public class Categort_RecyclerView_Adapter extends RecyclerView.Adapter<Categort
     {
         public TextView id;
         public TextView name;
+        public TextView codeNum;
         public Button moreBtn;
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
 
            id=itemView.findViewById(R.id.catID);
            name=itemView.findViewById(R.id.catName);
+           codeNum=itemView.findViewById(R.id.codeNumber);
            moreBtn=itemView.findViewById(R.id.more);
         }
     }
@@ -67,6 +69,7 @@ public class Categort_RecyclerView_Adapter extends RecyclerView.Adapter<Categort
         CategoryModel currentItem=categoryModels.get(position);
         holder.id.setText(String.valueOf(currentItem.getId()));
         holder.name.setText(currentItem.getCategoryName());
+        holder.codeNum.setText(currentItem.getNetworkNumber());
 
         holder.moreBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +87,7 @@ public class Categort_RecyclerView_Adapter extends RecyclerView.Adapter<Categort
 
                                 Intent intent=new Intent(context,AddCategory.class);
                                 intent.putExtra("CategoryName", holder.name.getText());
+                                intent.putExtra("NetworkNumber",holder.codeNum.getText());
                                 intent.putExtra("CatID",holder.id.getText());
                                 intent.putExtra("Check","Edit");
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

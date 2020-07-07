@@ -29,7 +29,7 @@ public class MyHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE if not exists Short_Code (id INTEGER PRIMARY KEY AUTOINCREMENT,Short_Code_Name TEXT,Short_Code_String TEXT,Category INTEGER)");
         db.execSQL("CREATE TABLE if not exists Pre_Built_Message (id INTEGER PRIMARY KEY AUTOINCREMENT,Phone_Number TEXT,Ammount TEXT,Short_Code_String TEXT)");
         db.execSQL("CREATE TABLE if not exists Message (id INTEGER PRIMARY KEY AUTOINCREMENT,Destination_Number TEXT,Message TEXT,Status TEXT)");
-        db.execSQL("CREATE TABLE if not exists CodeCategory (id INTEGER PRIMARY KEY AUTOINCREMENT,Category_Name TEXT)");
+        db.execSQL("CREATE TABLE if not exists CodeCategory (id INTEGER PRIMARY KEY AUTOINCREMENT,Category_Name TEXT, NetworkNumber TEXT)");
         db.execSQL("CREATE TABLE if not exists Short_Code_Forward_String (id INTEGER PRIMARY KEY AUTOINCREMENT,Code_Name TEXT,Code_String TEXT,Forward_String TEXT,Category INTEGER)");
         db.execSQL("CREATE TABLE if not exists Recipients_Number (id INTEGER PRIMARY KEY AUTOINCREMENT,Number_Name TEXT,Number TEXT)");
         db.execSQL("CREATE TABLE if not exists Auto_Short_Code (id INTEGER PRIMARY KEY AUTOINCREMENT,Code_Name TEXT,Sample_String TEXT,Build_String TEXT,Number TEXT,Recive_Number TEXT,Sim_Value TEXT,Selected_Functionality TEXT)");
@@ -282,11 +282,12 @@ public class MyHelper extends SQLiteOpenHelper {
         return result1;
     }
 
-    public boolean addCategory(String name) {
+    public boolean addCategory(String name,String number) {
 
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("Category_Name", name);
+        values.put("NetworkNumber",number);
         long result1 = database.insert("CodeCategory", null, values);
         database.close();
         if (result1 == -1) {
@@ -307,7 +308,7 @@ public class MyHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
 
-                catList.add(new CategoryModel(cursor.getInt(0), cursor.getString(1)));
+                catList.add(new CategoryModel(cursor.getInt(0), cursor.getString(1),cursor.getString(2)));
 
             } while (cursor.moveToNext());
         }
@@ -326,10 +327,11 @@ public class MyHelper extends SQLiteOpenHelper {
 
     }
 
-    public boolean updateCategory(String name, String id) {
+    public boolean updateCategory(String name, String id, String networkNumber) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("Category_Name", name);
+        cv.put("NetworkNumber",networkNumber);
         long result = database.update("CodeCategory", cv, "id=" + id, null);
         if (result == -1) {
             return false;

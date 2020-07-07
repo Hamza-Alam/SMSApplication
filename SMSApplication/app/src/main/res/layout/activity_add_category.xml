@@ -87,7 +87,7 @@
 
     <EditText
         android:textColor="#000"
-        android:id="@+id/possibleNetworkText"
+        android:id="@+id/possibleNetworkNumber"
         android:textSize="15sp"
         android:padding="10dp"
         android:layout_marginStart="8dp"
@@ -108,7 +108,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/possibleNetworkText"
+        app:layout_constraintTop_toBottomOf="@+id/possibleNetworkNumber"
         tools:ignore="MissingConstraints" />
 
 

@@ -29,6 +29,19 @@
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints,Suspicious0dp" />
+    <TextView
+        android:textSize="15sp"
+        android:textColor="#000"
+        android:id="@+id/codeNumber"
+        android:layout_marginStart="180dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/catName"
+        android:fontFamily="sans-serif-smallcaps"
+        android:padding="10dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/catName"
+        tools:ignore="MissingConstraints,Suspicious0dp" />
 
 
     <Button
@@ -48,7 +61,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.909"
-        app:layout_constraintStart_toEndOf="@+id/catName"
+        app:layout_constraintStart_toEndOf="@+id/codeNumber"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints,Suspicious0dp" />
 
